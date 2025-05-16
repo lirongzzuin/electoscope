@@ -1,0 +1,20 @@
+# 🔧 IntelliJ
+.idea/
+*.iml
+
+# 📦 Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.DS_Store
+
+# ☕ Gradle + Java
+backend/build/
+backend/.gradle/
+backend/out/
+backend/.env
+backend/.DS_Store
+
+# 🤖 OS 별
+.DS_Store
+Thumbs.db

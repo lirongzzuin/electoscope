@@ -1,20 +1,21 @@
-# 🔧 IntelliJ
+# 🔧 IDE
 .idea/
 *.iml
 
-# 📦 Node
+# 📦 Node.js
 frontend/node_modules/
 frontend/dist/
-frontend/.env
-frontend/.DS_Store
 
-# ☕ Gradle + Java
+# ☕ Java & Gradle
 backend/build/
 backend/.gradle/
 backend/out/
-backend/.env
-backend/.DS_Store
 
-# 🤖 OS 별
+# 🗝️ 민감 정보 및 환경 변수
+*.env
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-prod.properties
+
+# 🗂️ OS
 .DS_Store
 Thumbs.db

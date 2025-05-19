@@ -1,7 +1,7 @@
 package com.electoscope.backend.crawler;
 
-import com.electoscope.backend.service.SentimentService;
 import com.electoscope.backend.util.HuggingFaceClient;
+import com.electoscope.backend.util.HuggingFaceSentimentClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 public class NewsCrawlerService {
 
     private final HuggingFaceClient huggingFaceClient;
-    private final SentimentService sentimentService;
+    private final HuggingFaceSentimentClient sentimentClient;
 
     public void runCrawler() {
         NewsListParser listParser = new NewsListParser();
@@ -23,10 +23,10 @@ public class NewsCrawlerService {
         for (NewsItem item : items) {
             String content = NewsDetailParser.extractContent(item.getUrl());
 
-            if (content.length() < 100) continue; // 본문 너무 짧은 뉴스 제외
+            if (content.length() < 100) continue;
 
             String summary = huggingFaceClient.summarizeText(content);
-            String sentiment = sentimentService.getSentimentLabel(summary);
+            String sentiment = sentimentClient.getSentiment(summary);
 
             log.info("📰 [{}] {}", item.getPress(), item.getTitle());
             log.info("📄 요약: {}", summary);

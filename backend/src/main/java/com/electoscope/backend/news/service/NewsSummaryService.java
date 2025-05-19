@@ -4,6 +4,7 @@ import com.electoscope.backend.news.dto.NewsSummaryResponseDTO;
 import com.electoscope.backend.news.entity.NewsSummary;
 import com.electoscope.backend.news.repository.NewsSummaryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class NewsSummaryService {
     }
 
     public List<NewsSummaryResponseDTO> getAll() {
-        return newsSummaryRepository.findAll().stream()
+        return newsSummaryRepository.findAll(Sort.by(Sort.Direction.DESC, "id")).stream()
                 .map(NewsSummaryResponseDTO::new)
                 .toList();
     }

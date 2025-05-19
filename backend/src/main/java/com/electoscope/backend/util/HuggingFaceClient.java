@@ -39,4 +39,26 @@ public class HuggingFaceClient {
             return "요약에 실패했습니다.";
         }
     }
+
+    // ⭐ 감성 분석 추가 메서드
+    public String analyzeSentiment(String text) {
+        String sentimentModelUrl = "https://api-inference.huggingface.co/models/nlptown/bert-base-multilingual-uncased-sentiment";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(apiKey);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, String> body = new HashMap<>();
+        body.put("inputs", text);
+
+        HttpEntity<Map<String, String>> entity = new HttpEntity<>(body, headers);
+
+        try {
+            ResponseEntity<String> response = restTemplate.postForEntity(sentimentModelUrl, entity, String.class);
+            return response.getBody();
+        } catch (Exception e) {
+            log.error("감성 분석 실패: {}", e.getMessage());
+            return "감성 분석 실패";
+        }
+    }
 }

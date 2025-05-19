@@ -8,4 +8,6 @@ import lombok.Getter;
 public class SummaryResponseDTO {
     private String originalText;
     private String summary;
+    private String sentiment;
 }
+

@@ -1,11 +1,14 @@
+# 👉 HELP.md, Gradle 자체 파일들
 HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
+
+# ☕ Java 빌드 결과물 제외
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### STS ###
+# 🔧 STS (Spring Tool Suite)
 .apt_generated
 .classpath
 .factorypath
@@ -17,8 +20,8 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-### IntelliJ IDEA ###
-.idea
+# 💡 IntelliJ
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -26,12 +29,21 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
-### NetBeans ###
+# 📦 NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+# 💻 VSCode
 .vscode/
+
+# 🔐 민감 정보 - 환경 설정 (중요!)
+*.env
+.env
+backend/.env
+
+# ❌ 민감한 Spring 설정 파일
+/src/main/resources/application-prod.properties
+/src/main/resources/application-local.properties

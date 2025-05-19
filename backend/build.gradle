@@ -59,6 +59,12 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// JSON 파싱용 라이브러리 추가
+	implementation 'org.json:json:20230618'
+	// 크롤링
+	implementation 'org.jsoup:jsoup:1.17.2'
+
 }
 
 tasks.named('test') {

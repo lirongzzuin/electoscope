@@ -7,4 +7,5 @@ RUN chmod +x ./gradlew
 RUN ./gradlew bootJar --no-daemon
 
 EXPOSE 8080
-CMD ["./gradlew", "bootRun", "--no-daemon"]
+
+CMD ["./gradlew", "bootRun", "--no-daemon", "-Dspring.profiles.active=prod"]

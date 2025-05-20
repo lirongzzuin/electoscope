@@ -15,10 +15,10 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SentimentService {
 
-    @Value("${huggingface.api.key}")
+    @Value("${HUGGINGFACE_API_KEY}")
     private String apiKey;
 
-    @Value("${huggingface.sentiment.url}")
+    @Value("${HUGGINGFACE_SENTIMENT_URL}")
     private String apiUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();

@@ -19,3 +19,5 @@ backend/src/main/resources/application-prod.properties
 # 🗂️ OS
 .DS_Store
 Thumbs.db
+
+.env

@@ -4,6 +4,8 @@ import ComparePage from "./pages/ComparePage";
 import FeedPage from "./pages/FeedPage";
 import StatsPage from "./pages/StatsPage";
 import TimelinePage from "./pages/TimelinePage";
+import AddPledgePage from "./pages/AddPledgePage";
+import HomePage from "./pages/HomePage";
 
 
 export default function App() {
@@ -15,6 +17,8 @@ export default function App() {
                 <Route path="/feed" element={<FeedPage />} />
                 <Route path="/stats" element={<StatsPage />} />
                 <Route path="/stats/timeline" element={<TimelinePage />} />
+                <Route path="/add-pledge" element={<AddPledgePage />} />
+                <Route path="/" element={<HomePage />} />
             </Routes>
         </Router>
     );

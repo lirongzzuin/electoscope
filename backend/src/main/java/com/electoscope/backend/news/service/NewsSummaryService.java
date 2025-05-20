@@ -26,4 +26,8 @@ public class NewsSummaryService {
                 .map(NewsSummaryResponseDTO::new)
                 .toList();
     }
+
+    public boolean existsByUrl(String url) {
+        return newsSummaryRepository.existsByUrl(url);
+    }
 }

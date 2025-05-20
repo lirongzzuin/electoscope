@@ -13,12 +13,14 @@ public class PledgeDTO {
     private String candidate;
     private String category;
     private String content;
+    private String sentiment;
 
     public static PledgeDTO from(Pledge entity) {
         return new PledgeDTO(
                 entity.getCandidate(),
                 entity.getCategory(),
-                entity.getContent()
+                entity.getContent(),
+                entity.getSentiment()
         );
     }
 }

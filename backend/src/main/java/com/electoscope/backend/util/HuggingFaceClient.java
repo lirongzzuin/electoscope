@@ -13,10 +13,10 @@ import java.util.Map;
 @Component
 public class HuggingFaceClient {
 
-    @Value("${huggingface.api.key}")
+    @Value("${HUGGINGFACE_API_KEY}")
     private String apiKey;
 
-    @Value("${huggingface.api.url}")
+    @Value("${HUGGINGFACE_API_URL}")
     private String apiUrl;
 
     private final RestTemplate restTemplate = new RestTemplate();

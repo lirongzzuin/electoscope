@@ -8,4 +8,4 @@ RUN ./gradlew bootJar --no-daemon -x test
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "java -Xmx350m -Dspring.profiles.active=prod -jar build/libs/*.jar"]
+CMD ["sh", "-c", "java -Xmx350m -Dserver.port=8080 -Dspring.profiles.active=prod -jar build/libs/*.jar"]

@@ -14,7 +14,7 @@ export default function HomePage() {
 
                 <div className="flex flex-col md:flex-row justify-center gap-4">
                     <Link
-                        to="/feed"
+                        to="/summary"
                         className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded transition"
                     >
                         뉴스 요약 보기

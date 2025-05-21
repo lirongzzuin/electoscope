@@ -11,6 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("https://electoscope.vercel.app")
+                .allowedOrigins("https://electoscope-asbeg2kcv-lirongzzuins-projects.vercel.app")
                 .allowedMethods("*")
                 .allowedHeaders("*");
     }

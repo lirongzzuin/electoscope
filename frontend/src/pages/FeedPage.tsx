@@ -19,7 +19,8 @@ export default function FeedPage() {
     const [keyword, setKeyword] = useState("");
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/news-summaries")
+        axios
+            .get(`${import.meta.env.VITE_API_BASE}/api/news-summaries`)
             .then(res => setNewsList(res.data))
             .catch(() => alert("뉴스 목록 불러오기 실패"));
     }, []);

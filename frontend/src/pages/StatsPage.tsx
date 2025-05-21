@@ -13,13 +13,18 @@ export default function StatsPage() {
     const [data, setData] = useState<CandidateMention[]>([]);
 
     useEffect(() => {
-        axios.get<Record<string, number>>("http://localhost:8080/api/stats/mentions")
+        axios
+            .get<Record<string, number>>(`${import.meta.env.VITE_API_BASE}/api/stats/mentions`)
             .then((res) => {
                 const transformed: CandidateMention[] = Object.entries(res.data).map(([name, count]) => ({
                     name,
                     count,
                 }));
                 setData(transformed);
+            })
+            .catch(() => {
+                alert("후보 언급량 통계를 불러오지 못했습니다.");
+                setData([]);
             });
     }, []);
 

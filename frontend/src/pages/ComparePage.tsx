@@ -15,19 +15,28 @@ export default function ComparePage() {
     const [selectedCategory, setSelectedCategory] = useState("전체");
 
     useEffect(() => {
-        axios.get<Pledge[]>("http://localhost:8080/api/pledges")
-            .then(res => setData(res.data));
+        axios
+            .get<Pledge[]>(`${import.meta.env.VITE_API_BASE}/api/pledges`)
+            .then((res) => setData(res.data))
+            .catch((err) => {
+                console.error("공약 불러오기 실패", err);
+                setData([]); // 실패 시 빈 배열로 설정
+            });
     }, []);
+
 
     const filtered = selectedCategory === "전체"
         ? data
         : data.filter(p => p.category === selectedCategory);
 
-    const grouped = filtered.reduce((acc: Record<string, Pledge[]>, cur) => {
-        if (!acc[cur.category]) acc[cur.category] = [];
-        acc[cur.category].push(cur);
-        return acc;
-    }, {});
+
+    const grouped = Array.isArray(filtered)
+        ? filtered.reduce((acc: Record<string, Pledge[]>, cur) => {
+            if (!acc[cur.category]) acc[cur.category] = [];
+            acc[cur.category].push(cur);
+            return acc;
+        }, {})
+        : {};
 
     const sentimentBadge = (sentiment: string) => {
         const base = "px-2 py-0.5 rounded text-xs font-medium";

@@ -40,7 +40,8 @@ export default function TimelinePage() {
     const [newsList, setNewsList] = useState<News[]>([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/stats/mentions/daily")
+        axios
+            .get(`${import.meta.env.VITE_API_BASE}/api/stats/mentions/daily`)
             .then((res) => {
                 const raw = res.data;
                 const dateMap: { [date: string]: any } = {};
@@ -80,7 +81,8 @@ export default function TimelinePage() {
 
     const handleDateClick = (date: string) => {
         setSelectedDate(date);
-        axios.get<News[]>("http://localhost:8080/api/news-summaries")
+        axios
+            .get<News[]>(`${import.meta.env.VITE_API_BASE}/api/news-summaries`)
             .then(res => {
                 const filteredNews = res.data.filter(n => n.dateTime.startsWith(date));
                 setNewsList(filteredNews);

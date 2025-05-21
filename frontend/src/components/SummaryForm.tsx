@@ -14,19 +14,20 @@ export default function SummaryForm() {
         setSentiment("");
 
         try {
-            const response = await axios.post("http://localhost:8080/api/summarize", {
-                text,
-            });
+            const response = await axios.post(
+                `${import.meta.env.VITE_API_BASE}/api/summarize`,
+                { text }
+            );
             setSummary(response.data.summary);
             setSentiment(response.data.sentiment);
         } catch (error) {
+            console.error("요약 에러:", error);
             setSummary("요약 요청 중 오류가 발생했습니다.");
         } finally {
             setLoading(false);
         }
     };
 
-    // 감성 등급 → 이모지 매핑
     const sentimentToEmoji = (label: string) => {
         if (label.includes("5")) return "😍 매우 긍정적";
         if (label.includes("4")) return "😄 긍정적";
@@ -38,13 +39,13 @@ export default function SummaryForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-      <textarea
-          className="w-full h-40 p-3 border border-gray-300 rounded"
-          placeholder="뉴스 본문을 입력하세요..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          required
-      />
+            <textarea
+                className="w-full h-40 p-3 border border-gray-300 rounded"
+                placeholder="뉴스 본문을 입력하세요..."
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                required
+            />
             <button
                 type="submit"
                 className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
@@ -61,8 +62,8 @@ export default function SummaryForm() {
                     <div className="mt-4">
                         <h4 className="font-semibold">감성 분석 결과:</h4>
                         <span className="inline-block mt-1 px-3 py-1 bg-yellow-100 text-yellow-800 rounded">
-              {sentimentToEmoji(sentiment)}
-            </span>
+                            {sentimentToEmoji(sentiment)}
+                        </span>
                     </div>
                 </div>
             )}
